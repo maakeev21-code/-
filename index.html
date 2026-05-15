@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Золотой рассвет на пешеходе</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <!-- СЛАЙД 1 -->
+    <div class="slide slide1 active">
+        <div class="reflection"></div>
+        <div class="content">
+            <h1>Умный пешеход в Кыргызстане</h1>
+            <p class="subtitle">От проблемы к безопасной среде</p>
+        </div>
+        <div class="neon-line"></div>
+        <button class="nav-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 3 -->
+    <div class="slide slide3">
+        <img src="./photo/Снимок экрана 2026-05-15 230842.png" alt="Slide 3">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 4 -->
+    <div class="slide slide4">
+        <img src="./photo/Снимок экрана 2026-05-15 230859.png" alt="Slide 4">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 5 -->
+    <div class="slide slide5">
+        <img src="./photo/Снимок экрана 2026-05-15 230917.png" alt="Slide 5">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 6 -->
+    <div class="slide slide6">
+        <img src="./photo/Снимок экрана 2026-05-15 230937.png" alt="Slide 6">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 7 -->
+    <div class="slide slide7">
+        <img src="./photo/Снимок экрана 2026-05-15 230951.png" alt="Slide 7">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 8 -->
+    <div class="slide slide8">
+        <img src="./photo/Снимок экрана 2026-05-15 231003.png" alt="Slide 8">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 9 -->
+    <div class="slide slide9">
+        <img src="./photo/Снимок экрана 2026-05-15 231018.png" alt="Slide 9">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 10 -->
+    <div class="slide slide10">
+        <img src="./photo/Снимок экрана 2026-05-15 231032.png" alt="Slide 10">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 11 -->
+    <div class="slide slide11">
+        <img src="./photo/Снимок экрана 2026-05-15 231044.png" alt="Slide 11">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 12 -->
+    <div class="slide slide12">
+        <img src="./photo/Снимок экрана 2026-05-15 231101.png" alt="Slide 12">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 13 -->
+    <div class="slide slide13">
+        <img src="./photo/Снимок экрана 2026-05-15 231113.png" alt="Slide 13">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+        <button class="next-button" onclick="nextSlide()">Далее →</button>
+    </div>
+
+    <!-- СЛАЙД 14 -->
+    <div class="slide slide13">
+        <img src="./photo/Снимок экрана 2026-05-15 231130.png" alt="Slide 14">
+        <button class="back-button" onclick="prevSlide()">← Назад</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Клавиатурная навигация
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Сенсорная навигация для мобильных (свайпы)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50) {
+                // Свайп влево - следующий слайд
+                nextSlide();
+            }
+            if (touchEndX - touchStartX > 50) {
+                // Свайп вправо - предыдущий слайд
+                prevSlide();
+            }
+        }
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+    </script>
+</body>
+</html>
